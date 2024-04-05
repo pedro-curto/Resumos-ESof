@@ -277,7 +277,10 @@ Regression Testing
 
 ## Code Reuse
 - Libraries (reuses code)
+We have control -> invoke library, regain control
 - Application frameworks (reuses design)
+"Inversion of control" – "Don’t call us, we’ll call you"
+We invoke framework -> framework gains control and invokes our code
 - Code generators (generates code)
 - Aspect-oriented development (generates code; code weaving. e.g.: @Transactional(isolation = Isolation.SERIALIZABLE))
 - Model-driven engineering (generates code; different languages)
