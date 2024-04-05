@@ -482,10 +482,28 @@ They may conflict - software architect defines the tradeoff among different stak
 
 ### Architectural Views
 Different perspectives of the system architecture.
-- Logical view
-- Physical view
-- Development view
-- Process view
+
+Logical View
+: Represents core abstractions and entities of the system.
+Provides a conceptual understanding of the system's functionality.
+Establishes relationships between system requirements and entities.
+
+Process View
+: Illustrates runtime behavior and interactions among processes.
+Assesses non-functional characteristics like performance and availability.
+Helps understand how the system operates under different conditions.
+
+
+Development View:
+: Organizes software components for development.
+Guides developers in decomposing the software into manageable parts.
+Facilitates coordination and collaboration among development teams.
+
+
+Physical View
+: Depicts the system's hardware architecture.
+Shows how software components are distributed across physical processors.
+Addresses concerns related to resource allocation and system scalability.
 
 ## Architectural Patterns (TODO falta Used when:, I forgor)
 Used to restrict number of possible forms.
@@ -729,7 +747,7 @@ Represents an inheritance hierarchy of classes with one table for each class.
 ### Concrete Table Inheritance
 Represents an inheritance hierarchy of classes with one table per concrete class in the hierarchy.
 
-### Remain
+### Remaining Patterns
 - Dependent Mapping
 
 - Embedded Value
