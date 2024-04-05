@@ -172,7 +172,23 @@ Components:
 - Assertion part
 
 #### Test Doubles
-Any kind of pretend object used in place of a real object for testing purposes (dummies, fake objects, stubs, spies, mocks)
+Any kind of pretend object used in place of a real object for testing purposes.
+
+Dummy objects
+: Passed around but never actually used (fill parameter lists)
+
+Fake objects
+: Working implementations but unsuitable for production (e.g. in-memory database)
+
+Stubs
+: Canned answers to calls made during the test, usually not responding to anything outside what's programmed in for the test
+
+Spies
+: Stubs that also record some information based on how they were called
+
+Mocks
+: Pre-programmed objects with expectations which form a specification of the calls they are expected to receive
+
 Advantages:
 - Isolate units
 - Reduce dependencies between teams
