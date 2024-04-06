@@ -57,20 +57,30 @@ Scrum
 - ScrumMaster: guides team in effective use of Scrum method; coach for the team; authority within the team on how Scrum is used
 
 #### Key Terms
-- Development team
-- Potentially shippable product increment
-- Product backlog
-- Product owner
-- Scrum
-- ScrumMaster
-- Sprint
-- Velocity 
-(check table in slides)
+| Scrum Term | Definition |
+| ----------- | ----------- |
+| Development Team | A self-organizing group of software developers, typically no more than seven people, responsible for developing software and essential project documents. |
+| Potentially Shippable Product Increment | The software increment delivered from a sprint, ideally in a finished state requiring no further work, though this isn't always achievable.|
+| Product Backlog | A prioritized list of "to do" items for the Scrum team, which can include feature definitions, software requirements, user stories, or other necessary tasks like architecture definition or user documentation. |
+| Product Owner | An individual or small group responsible for identifying product features or requirements, prioritizing them for development, and continuously reviewing the product backlog to ensure alignment with critical business |
+| Scrum | A daily meeting of the Scrum team to review progress and prioritize daily work. Short, face-to-face, and involves the entire team. |
+| ScrumMaster | Responsible for ensuring adherence to the Scrum process, guiding the team in effective Scrum use, and interfacing with the company to shield the team from external distractions. Not to be confused with a project manager. |
+| Sprint | A development iteration (2-4 weeks).
+| Velocity | Estimate of the amount of product backlog effort a team can cover in a single sprint. Helps teams plan and estimate what can be accomplished in each sprint, providing a basis for measuring performance and improvement. |
 
 #### Sprint Activities  
-- Sprint planning
-- Sprint execution
-- Sprint reviewing
+Sprint planning
+: Selection of work items to be completed in that sprint and refined to create a sprint backlog.
+
+
+Sprint execution
+: Implementation of the sprint backlog items. 
+The sprint **is not extended** if the items aren't all completed.
+Unfinished items are returned to the product backlog and queued for a future sprint.
+
+Sprint reviewing
+: The team (and external stakeholders, possibly) reviews the work done in the sprint.
+The team reflects on the sprint and identifies ways to improve.
 
 #### Sprint Planning
 - Establish an agreed sprint goal
@@ -788,6 +798,9 @@ Necessary to keep track of:
 #### Class registration
 - Registration occurs at the class level rather than individual objects
 - Simplifies registration process by abstracting it at the class level
+
+[TODO include How is transactional consistency guaranteed?
+optimistic offline lock vs pessimistic offline lock]
 
 ### Identity Map
 Ensures that each object gets loaded only once by keeping every loaded object in a map. Looks up objects using the map when referring to them.
