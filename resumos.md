@@ -471,7 +471,22 @@ Improved by the use of formal verifications of the specifications
 Improved with the use of cross-checking different sources of information
 - Measurable: the system should resist attacks
 
-[TODO completar depois, isto é muito aborrecido, ES-08-1-Requirements Engineering, slide 46 onwards]
+### Requirements Document
+System customers
+: Specify the requirements and read them to check that they meet their needs.
+Customers specify changes to the requirements.
+
+Managers
+: Use the requirements to plan a bid for the system and to plan the system development process.
+
+System engineers
+: Use the requirements to understand what system is to be developed.
+
+System test engineers
+: Use the rqeuirements to develop validation tests for the system.
+
+System maintenance engineers
+: Use the requirements to understand the system and the relationships between its parts.
 
 ### Requirements Description
 Natural language
@@ -482,13 +497,109 @@ Structured natural language
 : Requirements are written in natural language on a standar form/template.
 Each field provides information about an aspect of the requirement.
 
-Design description languages
-: 
-
 Graphical notations
-
+: Graphic models with text annotations are used to define the functional requirements for the system (UML use case and sequence diagrams).
 
 Mathematical specifications
+: Based on concepts such as finite-state machines or sets. 
+Unambiguous but difficult to understand by most customers - cannot check if it represents what they want.
+
+Design description languages
+: Uses a language like a programming language with more abstract features by defining an operational model of the system.
+Rarely used but useful for interface specifications.
+
+### Requirements Engineering Process
+
+1. Business Requirements Specification
+2. Feasibility Study
+3. User Requirements Elicitation
+4. User Requirements Specification
+5. Prototyping
+6. System Requirements Elicitation
+7. System Requirements Specification and Modelling
+8. Reviews
+
+#### Requirements Elicitation and Analysis
+1. Requirements Discovery
+2. Requirements Classification and Organization
+3. Requirements Prioritization and Negotiation
+4. Requirements Specification (circles back to 1.)
+
+#### Requirements Validation
+Initial understanding of problem -> Initial requirements -> Changed understanding of problem -> Changed requirements
+
+Types:
+- Validity checks (real needs)
+- Consistency checks (conflicting requirements)
+- Completeness checks (all needs)
+- Realism checks (feasible)
+- Verifiability checks (can be tested)
+
+Validation techniques:
+- Reviews
+- Prototyping
+- Test-case generation
+
+### Requirements Management Planning
+Concerned with establishing how a set of evolving requirements will be managed. In the planning stage, we need to decide on:
+
+Requirements identification
+: Every requirement needs a unique identifier for cross-referencing and traceability.
+
+Change Management Process
+: Establish procedures to evaluate the impact and cost of changes to requirements.
+
+Traceability Policies
+: Define relationships between requirements and system design, specifying how records should be managed.
+
+Tool Support
+: Employ tools to handle the large volume of requirement information efficiently.
+
+### Requirements Change Management
+Problem analysis and change specification
+: Identify requirements issues or change proposals, analyze their validity and provide feedback.
+
+Change analysis and costing
+: Assess the impact of the change on the system and estimate the cost of making the change, and decide.
+
+Change implementation
+: Implement the change and update the system documentation.
+Update requirements document before making system changes to avoid discrepancies between specification and implementation
+
+**Flow:**
+
+**Identified problem**
+1. Problem Analysis and Change Specification
+2. Change Analysis and Costing
+3. Change Implementation
+
+**Revised requirements**
+
+Agile Requirements:
+- Stories: value and dimension
+- Product backlog: can be changed
+- Sprint backlog: preserve goal
+
+### Lehman's Law (classification of software systems)
+
+S-type systems
+: Problem is formally defined.
+Implement the specification.
+E.g. math library
+
+P-type systems
+: They implement a model of the problem.
+Define the abstraction and implement it.
+E.g. chess game
+
+E-type systems
+: They implement a model of the problem which becomes part of the reality.
+Define the abstraction, implement it and change the world.
+E.g. automated stock trading
+
+**Impact of Lehman's law?**
+- Requirements are a model of reality, and models change.
+
 
 ## Software Architecture
 - High level design for the stakeholders (client, end user, development team, business team).
