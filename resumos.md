@@ -251,7 +251,15 @@ Goal: showing that the component interface behaves according to its specificatio
 
 #### Approaches
 - Big bang integration (testing components all together)
-- Incrementally (bottom-up or top-down)
+- Incrementally:
+    * Bottom-up: test lower-level components first
+    * Top-down: test higher-level components first (uses doubles)
+
+### Test Pyramid
+Faster and more isolated tests at the bottom, slower and more integrated tests at the top.
+- Unit tests: 80% of tests
+- Component tests: 15% of tests
+- End-to-end tests: 5% of tests
 
 # Lecture 5
 ## Goals
