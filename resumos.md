@@ -273,11 +273,18 @@ Faster and more isolated tests at the bottom, slower and more integrated tests a
 Add functionality -> Test -> Change structure -> Test -> Repeat
 
 - TDD Refactoring
-- Litter-Pickup Refactoring
+
+Litter-Pickup Refactoring
+: Always leave the code better than when you found it.
+
 - Comprehension Refactoring
 - Preparatory Refactoring (make the change easy, then make the easy change)
-- Planned Refactoring
-- Long-term Refactoring
+
+Planned Refactoring
+: Failed to refactoring while working.
+
+Long-term Refactoring
+: Making a large-scale change to a software system in gradual way that allows you to release the system regularly while the change is in progress.
 
 ## Workflows of Refactoring
 Two hats metaphor:
@@ -538,10 +545,12 @@ Rarely used but useful for interface specifications.
 8. Reviews
 
 #### Requirements Elicitation and Analysis
-1. Requirements Discovery
-2. Requirements Classification and Organization
-3. Requirements Prioritization and Negotiation
-4. Requirements Specification (circles back to 1.)
+1. **Requirements Discovery:** Interact with stakeholders to uncover system needs and domain requirements
+
+2. **Requirements Classification and Organization:** Group and organize requirements logically for better management
+
+3. **Requirements Prioritization and Negotiation:** Resolve conflicts and prioritize requirements based on importance
+4. **Requirements Specification (circles back to 1.):** Document requirements for future reference, ranging from drafts to formal documents or informal records
 
 #### Requirements Validation
 Initial understanding of problem -> Initial requirements -> Changed understanding of problem -> Changed requirements
