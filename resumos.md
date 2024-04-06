@@ -346,8 +346,8 @@ Encapsulate a request as an object, thereby letting you parameterize clients wit
 different request, queue or log requests, and support undoable operations.
 
 Coupling:
-- Invoker is independent of the particular command
-- Client knows the particular command
+- Invoker is independent of the particular command (has low coupling with the command)
+- Client knows the particular command (strong coupling with command)
 - Easy to extend with new types of command
 
 Cohesion:
@@ -370,7 +370,7 @@ Intent is to compose objects into tree strcutures to represent part-whole hierar
 Implementing composite pattern lets clients treat individual objects and compositions uniformly.
 
 Coupling:
-- Client depends on interface common to all members
+- Client depends on interface common to all members (decoupled from component, only needs operation)
 - Members use the same interface when interacting eac other
 - Easy to extend with new types of members
 
@@ -466,10 +466,29 @@ Non-functional requirements
 
 ### Qualities of requirements
 - Completeness: do they capture all relevant aspects?
+Improved by the use of formal verifications of the specifications
 - Consistent: different stakeholders; security vs availability
+Improved with the use of cross-checking different sources of information
 - Measurable: the system should resist attacks
 
 [TODO completar depois, isto é muito aborrecido, ES-08-1-Requirements Engineering, slide 46 onwards]
+
+### Requirements Description
+Natural language
+: Requirements are written using numbered sentences in natural language. 
+One requirement per sentence.
+
+Structured natural language
+: Requirements are written in natural language on a standar form/template.
+Each field provides information about an aspect of the requirement.
+
+Design description languages
+: 
+
+Graphical notations
+
+
+Mathematical specifications
 
 ## Software Architecture
 - High level design for the stakeholders (client, end user, development team, business team).
@@ -509,12 +528,10 @@ Process View
 Assesses non-functional characteristics like performance and availability.
 Helps understand how the system operates under different conditions.
 
-
 Development View:
 : Organizes software components for development.
 Guides developers in decomposing the software into manageable parts.
 Facilitates coordination and collaboration among development teams.
-
 
 Physical View
 : Depicts the system's hardware architecture.
@@ -593,6 +610,7 @@ Application architectures are architectures for a type of system; they define ap
 - Transaction Processing Systems (transactional context)
 - Information Systems
 - Language Processing Systems
+Uses repository and pipe-and-filter patterns
 
 # Lecture 10
 ## Goals
@@ -687,13 +705,13 @@ An object that acts as a Gateway to a single record in a data source. There is o
 - Doesn't contain the domain logic
 
 ### Active Record
-An object that wraps a row in a database table or view, encapsualtes the database access, and adds domain logic on that data.
+An object that wraps a row in a database table or view, encapsulates the database access, and adds domain logic on that data.
 
 - SQL Code and domain logic are in the same class
 - Provides an object-oriented/instance interface
 - Contains the business logic
 - One-to-one mapping between object structure and database structure
-
+- A Domain Model in which classes match very closely the record structure of the database
 
 ### Data Mapper
 A layer of mappers that moves data between objects and a database while keeping them independent of each other and the mapper itself.
