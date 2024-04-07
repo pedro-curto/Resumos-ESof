@@ -803,17 +803,68 @@ Organizes business logic by procedures where each procedure handles a single req
 Most business applications can be thought of as a series of transactions, that view or change information and contain a certain amount of logic, as simple as displaying information in the database or involving many steps of validations and calculations. 
 A transaction script organizes all this logic primarily as a single procedure, making calls directly to the database on a thin database wrapper. Each transaction will have its own transaction script, although common subtasks can be broken into subprocedures.
 
+#### How it works
+- Transaction Script organizes logic primarily based on transactions performed within the system. For example, booking a hotel room would involve logic for checking room availability, calculating rates, and updating the database, all encapsulated within the "Book Hotel Room" procedure.
+- Each transaction has its own Transaction Script, which may call directly to the database or through a thin database wrapper. Common subtasks can be broken into subprocedures.
+- Transaction Scripts can be organized into classes, either with multiple Transaction Scripts in a single class or each Transaction Script in its own class using the Command pattern. Separating Transaction Scripts from presentation and data source logic is recommended for better code organization and testability.
+
+#### When to use it
+- Transaction Script is best suited for applications with straightforward logic and relatively few business rules. It offers simplicity and low overhead in terms of performance and understanding.
+- However, as the business logic becomes more complex and starts to duplicate across transactions, it may become harder to maintain and refactor. In such cases, transitioning to a Domain Model approach may be more appropriate for better code structure, readability, and reducing duplication.
+- There isn't a strict cutoff level for when to transition from Transaction Script to Domain Model, but it's generally advisable to consider the complexity of the business domain and the potential benefits of a more structured approach.
+
+
 ### Domain Model
 An object model of the domain that incorporates both behaviour and data.
 Ideal for complex business logic scenarios, where rules and behaviour describe various cases and interactions.
 Creates a web of interconnected objects, where each object represents some meaningful entity within the domain.
 
+#### How it works
+- A Domain Model introduces a layer of objects that model the business area, including objects representing data structures and those capturing business rules.
+- Objects in the Domain Model often resemble the database model but have differences such as multivalued attributes, complex associations, and inheritance.
+- There are two styles of Domain Model: simple and rich. The simple Domain Model closely mirrors the database design, while the rich Domain Model may involve inheritance, strategies, and other patterns to handle complex logic.
+- The Domain Model can be organized into classes, either with multiple related Transaction Scripts in a single class or with each Transaction Script in its own class using the Command pattern.
+- To maintain flexibility and ease of testing, it's essential to minimize coupling between the Domain Model and other layers of the system.
+
+#### When to use it
+- Domain Model is suitable for applications with complex and evolving business rules involving validation, calculations, and derivations.
+- It provides a structured approach to handling complex behavior within the system, offering better maintainability and scalability compared to simpler patterns like Transaction Script.
+- The decision to use Domain Model depends on the complexity of the behavior in the system and the familiarity of the development team with object-oriented design.
+- If using Domain Model, Data Mapper is often the preferred choice for database interaction, helping keep the Domain Model independent from the database schema.
+
 ### Table Module
 A single instance that handles the business logic for all rows in a database table or view.
 One of the key messages of object orientation is bundling the data with the behaviour that uses it. The traditional object-oriented approach is based on objects with identity, along the lines of Domain Model. Thus, if we have an Employee class, any instance of it corresponds to a particular employee. This scheme works well because once we have a reference to an employee, we can execute operations, follow relationships and gather data on him.
 
+#### How it works
+- Table Module packages data and behavior together, closely integrating the logic with the underlying table-oriented data structures.
+- Each Table Module class typically corresponds to a database table, containing methods to manipulate data within that table.
+- Table Modules often operate on Record Sets, which mimic SQL tables and hold tabular data retrieved from the database.
+- Multiple Table Modules may collaborate on the same Record Set to perform complex operations involving data from multiple tables or views.
+- The Table Module may be implemented as an instance or as a collection of static methods, with the advantage of instances allowing for initialization with existing record sets and enabling inheritance.
+- Table Modules may include queries as factory methods, providing an explicit method-based interface for working with data.
+
+#### When to use it
+- Table Module is suitable for applications accessing tabular data using Record Sets, particularly when the data structure is central to the code.
+- It provides an organized approach to fitting business logic into the application, and works better than a combination of Domain Model and Active Record especially when other parts of the application are based on a common table-oriented data structure.
+- However, Table Module may not offer the full power of object-oriented organization for handling complex logic compared to Domain Model. It's a trade-off between simplicity and complexity, with Domain Model being a better choice for complicated domain logic.
+
+
 ### Service Layer
-Defines an application's boundary with a layer of services that establishes a set of available operations and coordinates the application's response in each operation.
+Defines an application's boundary with a layer of services that establishes a set of available operations and coordinates the application's response in each operation. It encapsulates the application's business logic, controlling transactions and coordinating responses in the implementation of its operations.
+
+#### How it works
+- The Service Layer organizes business logic into two kinds: "domain logic," related to the problem domain, and "application logic," responsible for application-specific responsibilities.
+- It separates domain logic from application logic to improve reusability and maintainability.
+- There are two basic implementation variations: the domain facade approach and the operation script approach.
+    * In the domain facade approach, the Service Layer is implemented as thin facades over a Domain Model, with the facades establishing a boundary and set of operations for client interaction.
+    * In the operation script approach, the Service Layer is implemented as thicker classes that directly implement application logic but delegate domain logic to encapsulated domain object classes. Operations are organized into classes defining related logic, forming application "services."
+
+#### When to use it
+- The Service Layer is beneficial when an application has multiple kinds of clients and requires complex responses involving multiple transactional resources.
+- It is particularly useful in applications with complex use cases that need to coordinate atomic transactions across multiple resources.
+However, if an application's business logic only has one kind of client and its use case responses don't involve multiple transactional resources, a Service Layer may not be necessary.
+- It's advisable to include a Service Layer from the beginning if there's a possibility of introducing multiple client types or transactional resources in the future.
 
 # Lecture 11
 ## Object-Relational Behavioral Patterns
