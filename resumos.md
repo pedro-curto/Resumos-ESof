@@ -49,12 +49,11 @@ Acceptance criteria can be explicitly defined for user stories
 (check table in slide 16)
 
 ### Project Management
-Scrum
-: Agile method that provides a framework for agile project organization and planning.
+**Scrum:** Agile method that provides a framework for agile project organization and planning.
 
 #### Key Roles
-- Product Owner: ensures that development team is focused on product being built rather than less relevant technical issues
-- ScrumMaster: guides team in effective use of Scrum method; coach for the team; authority within the team on how Scrum is used
+- **Product Owner:** ensures that development team is focused on product being built rather than less relevant technical issues
+- **ScrumMaster:** guides team in effective use of Scrum method; coach for the team; authority within the team on how Scrum is used
 
 #### Key Terms
 | Scrum Term | Definition |
@@ -676,7 +675,7 @@ Physical View
 Shows how software components are distributed across physical processors.
 Addresses concerns related to resource allocation and system scalability.
 
-## Architectural Patterns (TODO falta Used when:, I forgor)
+## Architectural Patterns
 Used to restrict number of possible forms.
 
 ### Model-View-Controller
@@ -692,6 +691,10 @@ Separates an application into three interconnected components:
     * Maps user actions to model updates 
     * Selects view
 
+Usage:
+- When there are multiple ways to view and interact data.
+- Also when the future requirements for interaction and presentation of data are unknown.
+
 Advantages: 
 - Allows data to change independently of its representation and vice versa
 - Supports presentation of the same data in different ways w3ith changes mande in one representation shown 
@@ -706,9 +709,14 @@ Organizes the system into multiple layers, where each provides services to the l
 - Core business logic / System utilities
 - System support (OS, database...)
 
+Usage:
+- Building new facilities on top of existing systems
+- When development is spread across several teams with each team responsible for a layer of functionality
+- When there is a requirement for multi-level security
+
 Advantages:
 - Allows replacement of entire layers so long as the interface is maintained
-- Redundant facilities an be provided in each alyer to increase dependability of the system
+- Redundant facilities an be provided in each layer to increase dependability of the system
 
 Disadvantages:
 - Providing a clean separation between layers is often difficult; a high-level layer may have to interact directly with lower-level layers rather than through the layer immediately below it
@@ -716,6 +724,10 @@ Disadvantages:
 
 ### Repository
 All data in a system is managed in a central repository, accessible to all system components. They don't interact directly, only through the repository.
+
+Usage:
+- System in which large volumes of information are generated that has to be stored for a long time
+- In data-driven systems where data inclusion in the repository triggers an action or tool
 
 Advantages:
 - Components can be independent
@@ -739,10 +751,24 @@ Disadvantages:
 - Performance may be unpredictable (depends on network)
 - Management problems if servers are owned by different organizations
 
-### Pipe and filter TODO fazer este foda-se não me apeteceu, já faço
+### Pipe and filter
+Data processing in the system is organized so that each filter (processing component) is discrete and carries out one type of data transformation. The data flows (pipe) from one component to another for processing.
 
+Usage:
+- Data processing applications (batch and transaction-based) where inputs are processed in separate stages to generate related outputs
 
-## Application Architectures (TODO um bocado incompleto, slides de merda)
+Advantages:
+- Easy to understand, supports transformation reuse
+- Workflow matches structure of many business processes
+- Adding transformations is straightforward
+- Implemented as either sequential or concurrent system
+
+Disadvantages:
+- Format for data transfer has to be agreed upon between communicating transformations
+- Each transformation must parse input and uparse output to the agreed form
+- Increased system overhead; may be impossible to reuse transformations that use incompatible data structures
+
+## Application Architectures (TODO um bocado incompleto, slides maus, não se refere no guia de estudo vou ignorar agora)
 Application architectures are architectures for a type of system; they define application independent solutions. Examples are:
 
 - Transaction Processing Systems (transactional context)
@@ -800,6 +826,8 @@ Necessary to keep track of:
 - Updated objects (dirty)
 - Read objects (clean)
 
+Can use both concurrency checks (optimistic or pessimistic).
+
 #### Caller registration
 - Client code explicitly informs the Unit of Work about changes to objects
 - Provides control to the client but can lead to increased complexity
@@ -808,9 +836,13 @@ Necessary to keep track of:
 - Domain objects autonomously register themselves with the Unit of Work
 - Promotes an object-oriented design and encapsulates persistence logic
 
+"The usual trick here is to place registration methods in object methods. Loading an object from the database registers the object as clean; the setting methods register the object as dirty."
+
 #### Unit of work controller
 - A dedicated controller component manages the Unit of Work
 - Centralizes management, simplifies client code, and promotes encapsulation
+
+"Unit of Work handles all reads from the database and registers clean objects whenever they're read"
 
 #### Class registration
 - Registration occurs at the class level rather than individual objects
@@ -825,9 +857,10 @@ Loading the same object to memory twice can trigger consistency and performance 
 
 ### Lazy Load
 An object that doesn't contain all the data you need but knows how to get it. 
-By loading one object, we would load a huge number of related objects. Lazy load interrputs this loading, marks the object and if the data is needed, it is loaded when it is used. There are four varieties:
+By loading one object, we would load a huge number of related objects. Lazy load interrupts this loading, marks the object and if the data is needed, it is loaded when it is used. There are four varieties:
 - Lazy initialization: on field access, check first if the field is null, and load it if needed
 - Virtual proxy: a proxy of the object which loads the real object on demand
+Can generate identity problems
 - Value holder: wraps the real object
 - Ghost: real object in a partial state (only loads the identity)
 
@@ -932,7 +965,7 @@ Represents an inheritance hierarchy of classes with one table per concrete class
 - Inheritance Mappers
 
 
-## Distribution Patterns
+## Distribution Patterns (TODO could use further elaboration)
 
 ### Remote Facade
 Provides a coarse-grained facade on fine-grained objects to improve efficiency over a network.
